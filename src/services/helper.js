@@ -1,1 +1,1 @@
-export const BASE_URL= 'https://inotebook-backend-v95g.onrender.com';
+export const BASE_URL = "https://inotebook-backend-iemk.onrender.com";

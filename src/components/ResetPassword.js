@@ -5,7 +5,7 @@ import { useFormik } from "formik";
 import { SignupSchema } from "../schema";
 import { BiShow, BiHide } from "react-icons/bi";
 import { useParams } from "react-router-dom";
-import {BASE_URL} from "../services/helper";
+import { BASE_URL } from "../services/helper";
 
 const ResetPassword = () => {
   const { showAlert } = useContext(AlertContext);
@@ -16,28 +16,29 @@ const ResetPassword = () => {
     cpassword: "",
   };
 
-  let { values, errors, touched, handleBlur, handleChange, handleSubmit } =
-    useFormik({
-      initialValues: credentilas,
-      validationSchema: SignupSchema,
-    });
+  let {
+    values,
+    errors,
+    touched,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+  } = useFormik({
+    initialValues: credentilas,
+    validationSchema: SignupSchema,
+  });
 
   //   Valid user
   const validUser = async () => {
-    const response = await fetch(
-      `${BASE_URL}/resetpassword/${id}/${token}`,
-      {
-        method: "GET",
-        headers: {
-          "content-type": "application/json",
-        },
-      }
-    );
+    const response = await fetch(`${BASE_URL}/resetpassword/${id}/${token}`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+      },
+    });
 
     const json = await response.json();
-    if (json.status === "200") {
-      console.log("valid user");
-    } else {
+    if (!json.status === "200") {
       navigate("*");
     }
   };

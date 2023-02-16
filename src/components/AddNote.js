@@ -65,7 +65,7 @@ export const AddNote = () => {
                 className="form-control"
                 id="tag"
                 name="tag"
-                placeholder={note.tag}
+                placeholder="General"
                 value={note.tag}
                 onChange={onChange}
               />
